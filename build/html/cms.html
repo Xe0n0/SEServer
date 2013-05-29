@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>cms Package &mdash; Chatware 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Chatware 1.0 documentation" href="index.html" />
+    <link rel="up" title="." href="modules.html" />
+    <link rel="next" title="migrations Package" href="cms.migrations.html" />
+    <link rel="prev" title="SEServer Package" href="SEServer.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cms.migrations.html" title="migrations Package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="SEServer.html" title="SEServer Package"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Chatware 1.0 documentation</a> &raquo;</li>
+          <li><a href="modules.html" accesskey="U">.</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cms-package">
+<h1>cms Package<a class="headerlink" href="#cms-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-cms.models">
+<span id="models-module"></span><h2><tt class="xref py py-mod docutils literal"><span class="pre">models</span></tt> Module<a class="headerlink" href="#module-cms.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="cms.models.Activity">
+<em class="property">class </em><tt class="descclassname">cms.models.</tt><tt class="descname">Activity</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cms.models.Activity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>Activity(id, title, subtitle, time, location, organizer, content)</p>
+<dl class="exception">
+<dt id="cms.models.Activity.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#cms.models.Activity.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="cms.models.Activity.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">Activity.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#cms.models.Activity.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cms.models.Activity.follower">
+<tt class="descclassname">Activity.</tt><tt class="descname">follower</tt><a class="headerlink" href="#cms.models.Activity.follower" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cms.models.Activity.get_next_by_time">
+<tt class="descclassname">Activity.</tt><tt class="descname">get_next_by_time</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="headerlink" href="#cms.models.Activity.get_next_by_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="cms.models.Activity.get_previous_by_time">
+<tt class="descclassname">Activity.</tt><tt class="descname">get_previous_by_time</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="headerlink" href="#cms.models.Activity.get_previous_by_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="cms.models.Activity.objects">
+<tt class="descclassname">Activity.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x10eb7cfd0&gt;</em><a class="headerlink" href="#cms.models.Activity.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="cms.models.Activity.tagged_items">
+<tt class="descclassname">Activity.</tt><tt class="descname">tagged_items</tt><a class="headerlink" href="#cms.models.Activity.tagged_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class provides the functionality that makes the related-object
+managers available as attributes on a model class, for fields that have
+multiple &#8220;remote&#8221; values and have a GenericRelation defined in their model
+(rather than having another model pointed <em>at</em> them). In the example
+&#8220;article.publications&#8221;, the publications attribute is a
+ReverseGenericRelatedObjectsDescriptor instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cms.models.Activity.tags">
+<tt class="descclassname">Activity.</tt><tt class="descname">tags</tt><em class="property"> = &lt;taggit.managers._TaggableManager object at 0x10eba9250&gt;</em><a class="headerlink" href="#cms.models.Activity.tags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cms.models.Game">
+<em class="property">class </em><tt class="descclassname">cms.models.</tt><tt class="descname">Game</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cms.models.Game" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>Game(id, name, url)</p>
+<dl class="exception">
+<dt id="cms.models.Game.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#cms.models.Game.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="cms.models.Game.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">Game.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#cms.models.Game.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cms.models.Game.objects">
+<tt class="descclassname">Game.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x10eb80550&gt;</em><a class="headerlink" href="#cms.models.Game.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="cms.models.Game.tagged_items">
+<tt class="descclassname">Game.</tt><tt class="descname">tagged_items</tt><a class="headerlink" href="#cms.models.Game.tagged_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class provides the functionality that makes the related-object
+managers available as attributes on a model class, for fields that have
+multiple &#8220;remote&#8221; values and have a GenericRelation defined in their model
+(rather than having another model pointed <em>at</em> them). In the example
+&#8220;article.publications&#8221;, the publications attribute is a
+ReverseGenericRelatedObjectsDescriptor instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cms.models.Game.tags">
+<tt class="descclassname">Game.</tt><tt class="descname">tags</tt><em class="property"> = &lt;taggit.managers._TaggableManager object at 0x10eba9290&gt;</em><a class="headerlink" href="#cms.models.Game.tags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="cms.models.UserProfile">
+<em class="property">class </em><tt class="descclassname">cms.models.</tt><tt class="descname">UserProfile</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#cms.models.UserProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>UserProfile(id, user_id, realname, nickname, gender, age)</p>
+<dl class="exception">
+<dt id="cms.models.UserProfile.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#cms.models.UserProfile.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="cms.models.UserProfile.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">UserProfile.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#cms.models.UserProfile.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cms.models.UserProfile.objects">
+<tt class="descclassname">UserProfile.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x10eb80c10&gt;</em><a class="headerlink" href="#cms.models.UserProfile.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="cms.models.UserProfile.tagged_items">
+<tt class="descclassname">UserProfile.</tt><tt class="descname">tagged_items</tt><a class="headerlink" href="#cms.models.UserProfile.tagged_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class provides the functionality that makes the related-object
+managers available as attributes on a model class, for fields that have
+multiple &#8220;remote&#8221; values and have a GenericRelation defined in their model
+(rather than having another model pointed <em>at</em> them). In the example
+&#8220;article.publications&#8221;, the publications attribute is a
+ReverseGenericRelatedObjectsDescriptor instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="cms.models.UserProfile.tags">
+<tt class="descclassname">UserProfile.</tt><tt class="descname">tags</tt><em class="property"> = &lt;taggit.managers._TaggableManager object at 0x10eba9350&gt;</em><a class="headerlink" href="#cms.models.UserProfile.tags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="cms.models.UserProfile.user">
+<tt class="descclassname">UserProfile.</tt><tt class="descname">user</tt><a class="headerlink" href="#cms.models.UserProfile.user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cms.tests">
+<span id="tests-module"></span><h2><tt class="xref py py-mod docutils literal"><span class="pre">tests</span></tt> Module<a class="headerlink" href="#module-cms.tests" title="Permalink to this headline">¶</a></h2>
+<p>This file demonstrates writing tests using the unittest module. These will pass
+when you run &#8220;manage.py test&#8221;.</p>
+<p>Replace this with more appropriate tests for your application.</p>
+<dl class="class">
+<dt id="cms.tests.SimpleTest">
+<em class="property">class </em><tt class="descclassname">cms.tests.</tt><tt class="descname">SimpleTest</tt><big>(</big><em>methodName='runTest'</em><big>)</big><a class="headerlink" href="#cms.tests.SimpleTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.test.testcases.TestCase</span></tt></p>
+<dl class="method">
+<dt id="cms.tests.SimpleTest.test_basic_addition">
+<tt class="descname">test_basic_addition</tt><big>(</big><big>)</big><a class="headerlink" href="#cms.tests.SimpleTest.test_basic_addition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests that 1 + 1 always equals 2.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-cms.views">
+<span id="views-module"></span><h2><tt class="xref py py-mod docutils literal"><span class="pre">views</span></tt> Module<a class="headerlink" href="#module-cms.views" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="cms.views.logout">
+<tt class="descclassname">cms.views.</tt><tt class="descname">logout</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#cms.views.logout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cms.migrations.html">migrations Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cms.migrations.html#module-cms.migrations.0001_initial"><tt class="docutils literal"><span class="pre">0001_initial</span></tt> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cms.migrations.html#module-cms.migrations.0002_auto__add_field_userprofile_realname__add_field_userprofile_nickname__"><tt class="docutils literal"><span class="pre">0002_auto__add_field_userprofile_realname__add_field_userprofile_nickname__</span></tt> Module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">cms Package</a><ul>
+<li><a class="reference internal" href="#module-cms.models"><tt class="docutils literal"><span class="pre">models</span></tt> Module</a></li>
+<li><a class="reference internal" href="#module-cms.tests"><tt class="docutils literal"><span class="pre">tests</span></tt> Module</a></li>
+<li><a class="reference internal" href="#module-cms.views"><tt class="docutils literal"><span class="pre">views</span></tt> Module</a></li>
+<li><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="SEServer.html"
+                        title="previous chapter">SEServer Package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cms.migrations.html"
+                        title="next chapter">migrations Package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/cms.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cms.migrations.html" title="migrations Package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="SEServer.html" title="SEServer Package"
+             >previous</a> |</li>
+        <li><a href="index.html">Chatware 1.0 documentation</a> &raquo;</li>
+          <li><a href="modules.html" >.</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, WU Haotian.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

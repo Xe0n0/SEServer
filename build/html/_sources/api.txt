@@ -1,0 +1,4 @@
+auth related api
+======================
+ 
+.. autofunction:: cms.views
