@@ -92,7 +92,7 @@
 
 <dl class="attribute">
 <dt id="cms.models.Activity.objects">
-<tt class="descclassname">Activity.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x10eb7cfd0&gt;</em><a class="headerlink" href="#cms.models.Activity.objects" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">Activity.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x1088e8810&gt;</em><a class="headerlink" href="#cms.models.Activity.objects" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -108,7 +108,7 @@ ReverseGenericRelatedObjectsDescriptor instance.</p>
 
 <dl class="attribute">
 <dt id="cms.models.Activity.tags">
-<tt class="descclassname">Activity.</tt><tt class="descname">tags</tt><em class="property"> = &lt;taggit.managers._TaggableManager object at 0x10eba9250&gt;</em><a class="headerlink" href="#cms.models.Activity.tags" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">Activity.</tt><tt class="descname">tags</tt><em class="property"> = &lt;taggit.managers._TaggableManager object at 0x10890aa10&gt;</em><a class="headerlink" href="#cms.models.Activity.tags" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -132,7 +132,7 @@ ReverseGenericRelatedObjectsDescriptor instance.</p>
 
 <dl class="attribute">
 <dt id="cms.models.Game.objects">
-<tt class="descclassname">Game.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x10eb80550&gt;</em><a class="headerlink" href="#cms.models.Game.objects" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">Game.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x1088e8d50&gt;</em><a class="headerlink" href="#cms.models.Game.objects" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -148,7 +148,7 @@ ReverseGenericRelatedObjectsDescriptor instance.</p>
 
 <dl class="attribute">
 <dt id="cms.models.Game.tags">
-<tt class="descclassname">Game.</tt><tt class="descname">tags</tt><em class="property"> = &lt;taggit.managers._TaggableManager object at 0x10eba9290&gt;</em><a class="headerlink" href="#cms.models.Game.tags" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">Game.</tt><tt class="descname">tags</tt><em class="property"> = &lt;taggit.managers._TaggableManager object at 0x10890aad0&gt;</em><a class="headerlink" href="#cms.models.Game.tags" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -172,7 +172,7 @@ ReverseGenericRelatedObjectsDescriptor instance.</p>
 
 <dl class="attribute">
 <dt id="cms.models.UserProfile.objects">
-<tt class="descclassname">UserProfile.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x10eb80c10&gt;</em><a class="headerlink" href="#cms.models.UserProfile.objects" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">UserProfile.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x1088ef450&gt;</em><a class="headerlink" href="#cms.models.UserProfile.objects" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -188,7 +188,7 @@ ReverseGenericRelatedObjectsDescriptor instance.</p>
 
 <dl class="attribute">
 <dt id="cms.models.UserProfile.tags">
-<tt class="descclassname">UserProfile.</tt><tt class="descname">tags</tt><em class="property"> = &lt;taggit.managers._TaggableManager object at 0x10eba9350&gt;</em><a class="headerlink" href="#cms.models.UserProfile.tags" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">UserProfile.</tt><tt class="descname">tags</tt><em class="property"> = &lt;taggit.managers._TaggableManager object at 0x10890a990&gt;</em><a class="headerlink" href="#cms.models.UserProfile.tags" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -219,6 +219,32 @@ when you run &#8220;manage.py test&#8221;.</p>
 </div>
 <div class="section" id="module-cms.views">
 <span id="views-module"></span><h2><tt class="xref py py-mod docutils literal"><span class="pre">views</span></tt> Module<a class="headerlink" href="#module-cms.views" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="cms.views.login">
+<tt class="descclassname">cms.views.</tt><tt class="descname">login</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#cms.views.login" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>required params:</dt>
+<dd><ul class="first last simple">
+<li>username</li>
+<li>password</li>
+</ul>
+</dd>
+<dt>return value:</dt>
+<dd><dl class="first docutils">
+<dt>{</dt>
+<dd>&#8220;status&#8221;: 0</dd>
+</dl>
+<p>}</p>
+<dl class="docutils">
+<dt>{</dt>
+<dd>&#8220;status&#8221;: 101,
+&#8220;user_info&#8221;: &#8220;用户名或密码错误&#8221;</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="function">
 <dt id="cms.views.logout">
 <tt class="descclassname">cms.views.</tt><tt class="descname">logout</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#cms.views.logout" title="Permalink to this definition">¶</a></dt>

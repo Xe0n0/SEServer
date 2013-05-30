@@ -10,7 +10,7 @@ urlpatterns = patterns('cms.views',
     url(r'^SEServer/register$', 'register', name='register'),
     url(r'^SEServer/profile$', 'profile', name='profile'),
     url(r'^SEServer/add_tags$', 'add_tags'),
-
+    url(r'^$', 'home', name='home'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

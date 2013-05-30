@@ -1,0 +1,19 @@
+- model: cms.Activity
+  pk: 1
+  fields:
+    title: u'开会'
+    subtitle: u'软工开会'
+    content: u'软工第一次会议'
+    organizer: u'罗宇香'
+    location: u'1131'
+    time: 2013-5-31 13:00:00
+
+- model: cms.Activity
+  pk: 2
+  fields:
+    title: u'吃饭'
+    subtitle: u'软工聚餐'
+    content: u'软工第一次聚餐'
+    organizer: u'罗宇香'
+    location: u'1132'
+    time: 2013-5-31 18:00:00

@@ -107,7 +107,9 @@ ROOT_URLCONF = 'SEServer.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'SEServer.wsgi.application'
 
+
 TEMPLATE_DIRS = (
+
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -157,3 +159,33 @@ LOGGING = {
         },
     }
 }
+
+try:
+  import local_settings
+except ImportError:
+  print """ 
+    -------------------------------------------------------------------------
+    You need to create a local_settings.py file which needs to contain at least
+    database connection information.
+    
+    Copy local_settings_example.py to local_settings.py and edit it.
+    -------------------------------------------------------------------------
+    """
+  import sys 
+  sys.exit(1)
+else:
+  # Import any symbols that begin with A-Z. Append to lists any symbols that
+  # begin with "EXTRA_".
+  import re
+  for attr in dir(local_settings):
+    match = re.search('^EXTRA_(\w+)', attr)
+    if match:
+      name = match.group(1)
+      value = getattr(local_settings, attr)
+      try:
+        globals()[name] += value
+      except KeyError:
+        globals()[name] = value
+    elif re.search('^[A-Z]', attr):
+      globals()[attr] = getattr(local_settings, attr)
+
