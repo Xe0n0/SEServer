@@ -28,3 +28,10 @@ urlpatterns += patterns('cms.user_views',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
 )
+
+urlpatterns += patterns('cms.activity_views',
+
+    url(r'^SEServer/activity/all$', 'all', name='user_profile'),
+    url(r'^SEServer/activity/add_tags$', 'add_tags'),
+
+)

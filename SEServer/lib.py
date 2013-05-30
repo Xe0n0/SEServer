@@ -1,8 +1,10 @@
 from json import dumps
 from django.http import HttpResponse
+import datetime
 import sys
 
 def json_response(func):
+    dthandler = lambda obj: obj.isoformat() if isinstance(obj, datetime.datetime) else None
     def inner(request=None, *args, **kwargs):
         status_code = 200
         response = func(request, *args, **kwargs)
@@ -11,7 +13,7 @@ def json_response(func):
             content = response[0]
             status_code = response[1]
 	# print >> sys.stderr, content
-        return HttpResponse(dumps(content, ensure_ascii=False, separators=(',',':')),
+        return HttpResponse(dumps(content, default=dthandler, ensure_ascii=False, separators=(',',':')),
           mimetype="application/json", status=status_code)
 
     return inner
