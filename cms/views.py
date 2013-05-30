@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from models import UserProfile
 from SEServer.lib import json_response, auth_required
 from django.contrib.auth import authenticate, login as dj_login, logout as dj_logout
+import sys
 
 @require_POST
 @json_response
@@ -51,7 +52,7 @@ def profile(request):
 @require_POST
 @json_response
 def register(request):
-    opts={}
+
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
     age = request.POST.get('age', 20)
@@ -83,3 +84,24 @@ def register(request):
     	'user_info': u'用户名已被占用',
     }
 
+@require_POST
+@auth_required
+@json_response
+def add_tags(request):
+	user = request.user
+
+	tags = request.POST.get('tags', None)
+	if tags is None:
+		return {
+			'status': 103,
+			'user_info': 'tags required',
+		}
+	tags = tags.split(',')
+	user.profile.tags.add(*tags)
+
+	r_tags = map(lambda x: x.name, user.profile.tags.all())
+	print >> sys.stderr, r_tags
+	return {
+		'status': 0,
+		'tags': r_tags,
+	}
