@@ -33,5 +33,5 @@ urlpatterns += patterns('cms.activity_views',
 
     url(r'^activity/all$', 'all', name='user_profile'),
     url(r'^activity/add_tags$', 'add_tags'),
-
+    url(r'^activity/create$', 'create'),
 )

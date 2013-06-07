@@ -59,7 +59,7 @@ def profile(request):
             'realname': profile.realname,
             'nickname': profile.nickname,
             'gender': profile.gender,
-            'tags': list(profile.tags.all()),
+            'tags': [x.name for x in profile.tags.all()],
         }
     
     return {
@@ -118,7 +118,7 @@ def add_tags(request):
     user.profile.tags.add(*tags)
 
     r_tags = map(lambda x: x.name, user.profile.tags.all())
-    print >> sys.stderr, r_tags
+    # print >> sys.stderr, r_tags
     return {
         'status': 0,
         'tags': r_tags,

@@ -2,9 +2,38 @@ from django.http import HttpResponse
 from django.utils import simplejson
 from django.views.decorators.http import require_POST
 from django.contrib.auth.models import User
-from models import Activity
+from models import Activity, ActivityForm
 from SEServer.lib import json_response, auth_required
 import sys
+
+
+@require_POST
+@auth_required
+@json_response
+def create(request):
+	from datetime import datetime
+
+	form = ActivityForm(request.POST)
+	# form.time = datetime.strptime(request.POST.get('time', None), '%Y-%m-%d %H:%M')
+	
+
+
+	if form.is_valid():
+		ac = form.save(commit=False)
+
+		ac.organizer = request.user.profile.realname
+		ac.save()
+
+		return {
+			'status': 0
+		}
+	return {
+		'status': 103,
+		'error_info': form.errors,
+		'user_info': u'bad parameters',
+	}
+
+
 
 @require_POST
 @auth_required
@@ -48,5 +77,5 @@ def all(request):
 
 	array = Activity.objects.all()
 	array = map(tags, array.values(), array)
-	print >> sys.stderr, array
+	# print >> sys.stderr, array
 	return array
