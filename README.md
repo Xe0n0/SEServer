@@ -190,7 +190,7 @@ no parameter required
 * error
 	* status `103`: invalid parameters
 
-### activity/add_tags
+### activity/create
 `login required`
 #### parameters
 `title`: string
