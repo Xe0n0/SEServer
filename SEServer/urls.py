@@ -6,10 +6,10 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('cms.views',
     # Examples:
-    url(r'^SEServer/login$', 'login', name='login'),
-    url(r'^SEServer/register$', 'register', name='register'),
-    url(r'^SEServer/profile$', 'profile', name='profile'),
-    url(r'^SEServer/add_tags$', 'add_tags'),
+    url(r'^login$', 'login', name='login'),
+    url(r'^register$', 'register', name='register'),
+    url(r'^profile$', 'profile', name='profile'),
+    url(r'^add_tags$', 'add_tags'),
     url(r'^$', 'home', name='home'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -20,7 +20,7 @@ urlpatterns = patterns('cms.views',
 
 urlpatterns += patterns('cms.user_views',
 
-    url(r'^SEServer/user/profile$', 'profile', name='user_profile'),
+    url(r'^user/profile$', 'profile', name='user_profile'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -31,7 +31,7 @@ urlpatterns += patterns('cms.user_views',
 
 urlpatterns += patterns('cms.activity_views',
 
-    url(r'^SEServer/activity/all$', 'all', name='user_profile'),
-    url(r'^SEServer/activity/add_tags$', 'add_tags'),
-    url(r'^SEServer/activity/create$', 'create'),
+    url(r'^activity/all$', 'all', name='user_profile'),
+    url(r'^activity/add_tags$', 'add_tags'),
+    url(r'^activity/create$', 'create'),
 )
