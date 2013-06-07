@@ -48,5 +48,5 @@ def all(request):
 
 	array = Activity.objects.all()
 	array = map(tags, array.values(), array)
-	print >> sys.stderr, array
+	# print >> sys.stderr, array
 	return array
