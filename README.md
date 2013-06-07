@@ -189,4 +189,26 @@ no parameter required
 		]
 * error
 	* status `103`: invalid parameters
+
+### activity/add_tags
+`login required`
+#### parameters
+`title`: string
+`subtitle`: string
+`content`: string
+`location`(`optional`): string
+`time`: formatted datetime string as `yyyy-MM-dd HH:MM`
+
+#### return value
+
+* success
+
+		{
+			"status": 0,		    
+		}
+
+* error
+	* status `103`: bad parameters
+
+
 	
