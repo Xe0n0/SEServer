@@ -420,5 +420,35 @@ pre code {
 </li>
 </ul>
 
+
+<h3>activity/add_tags</h3>
+
+<p><code>login required</code></p>
+
+<h4>parameters</h4>
+
+<p><code>title</code>: string
+<code>subtitle</code>: string
+<code>content</code>: string
+<code>location</code>(<code>optional</code>): string
+<code>time</code>: formatted datetime string as <code>yyyy-MM-dd HH:MM</code></p>
+
+<h4>return value</h4>
+
+<ul>
+<li><p>success</p>
+
+<pre><code>  {
+      "status": 0,            
+  }
+</code></pre></li>
+<li><p>error</p>
+
+<ul>
+<li>status <code>103</code>: bad parameters</li>
+</ul>
+</li>
+</ul>
+
 </body>
 </html>
