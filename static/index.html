@@ -144,11 +144,23 @@ pre code {
 	}
 }
 </style>
-<title>user auth</title>
+<title>change log</title>
 
 </head>
 <body>
 <h1>API Documention</h1>
+
+<h2>change log</h2>
+
+<h3>1.1</h3>
+
+<ul>
+<li>add <code>user/random</code> <code>user/first</code> <code>set_online</code> <code>set_offline</code></li>
+<li><code>register</code> now auto create chat account with username <code>username@162.015.74.252</code> and password same as provided</li>
+</ul>
+
+
+<h2>Usage</h2>
 
 <ul>
 <li><p>API prefix: <code>162.105.74.252:8082/SEServer/</code>, so method <code>login</code> has url  162.105.74.252:8082/SEServer/login</p></li>
@@ -157,7 +169,7 @@ pre code {
 </ul>
 
 
-<h2>user auth</h2>
+<h2>account management</h2>
 
 <h3>login</h3>
 
@@ -226,8 +238,6 @@ pre code {
 </ul>
 
 
-<h2>user profile</h2>
-
 <h3>profile</h3>
 
 <p><code>login required</code></p>
@@ -292,6 +302,34 @@ pre code {
 </ul>
 
 
+<h3>set_online</h3>
+
+<p><code>login required</code></p>
+
+<p>set your online status to <code>True</code>, thus others may find you for chatting. You need manually call <code>set_offline</code> when needed. This online status is different from xmpp internal status.</p>
+
+<h4>parameters</h4>
+
+<p><code>none</code></p>
+
+<h3>return value</h3>
+
+<ul>
+<li><p>success</p>
+
+<pre><code>  {
+      "status": 0,
+  }
+</code></pre></li>
+</ul>
+
+
+<h3>set_offline</h3>
+
+<p>same as <code>set_online</code> except that this method get your online status to <code>False</code></p>
+
+<h2>interact with other users</h2>
+
 <h3>user/profile</h3>
 
 <p><code>login required</code></p>
@@ -327,6 +365,45 @@ pre code {
 </li>
 </ul>
 
+
+<h3>user/random</h3>
+
+<p><code>login required</code></p>
+
+<h4>parameters</h4>
+
+<p><code>none</code></p>
+
+<h4>return value</h4>
+
+<ul>
+<li><p>success</p>
+
+<pre><code>  {
+      "status": 0,
+      "username": "shuhang",
+      "nickname": "yamiedie",
+      "realname": "chunjiedi"
+  }
+</code></pre>
+
+<p>  Therefore you could send message to <code>shuhang@162.015.74.252</code>. This method won't return youself.</p></li>
+<li><p>error</p>
+
+<ul>
+<li>status <code>104</code>: no other user online</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>notes</h4>
+
+<p>this method won't set your <code>online</code> flag to <code>True</code>. Typically you want to call <code>set_online</code> first to allow others find you.</p>
+
+<h3>user/first</h3>
+
+<p>same as <code>user/random</code>, except that this method will return the first online user found. Searching order is not documented, you should not assume anything about this.</p>
 
 <h2>Activity</h2>
 

@@ -1,6 +1,14 @@
 API Documention
 ========
 
+## change log
+### 1.1
+
+* add `user/random` `user/first` `set_online` `set_offline`
+* `register` now auto create chat account with username `username@162.015.74.252` and password same as provided
+
+## Usage
+
 * API prefix: `162.105.74.252:8082/SEServer/`, so method `login` has url  162.105.74.252:8082/SEServer/login
 
 * All method shall be accessed with POST method
@@ -8,7 +16,7 @@ API Documention
 * All results returned in JSON format with status 0 indicates a successful request and status > 0 indicates error occurred and 'user_info' gives the reason.
 
 
-## user auth
+## account management
 
 ### login
 
@@ -52,7 +60,6 @@ API Documention
 * error
 	* status `103`: username used
 	
-## user profile 
 
 ### profile 
 `login required`
@@ -93,6 +100,28 @@ no parameters required
 * error
 	* status `103`: tags required
 	
+### set_online
+`login required`
+
+set your online status to `True`, thus others may find you for chatting. You need manually call `set_offline` when needed. This online status is different from xmpp internal status.
+
+#### parameters
+`none`
+
+### return value
+* success 
+
+		{
+		    "status": 0,
+		}
+		
+### set_offline
+same as `set_online` except that this method get your online status to `False`
+
+	
+## interact with other users 
+
+	
 ### user/profile
 `login required`
 #### parameters
@@ -116,6 +145,34 @@ no parameters required
 * error
 	* status `103`: user id required or invalid user id,
 	* status `105`: bad user profile,
+
+
+### user/random
+`login required`
+#### parameters
+`none`
+#### return value
+
+* success
+
+		{
+		    "status": 0,
+		    "username": "shuhang",
+		    "nickname": "yamiedie",
+		    "realname": "chunjiedi"
+		}
+	Therefore you could send message to `shuhang@162.015.74.252`. This method won't return youself.	
+	
+* error
+	* status `104`: no other user online
+	
+#### notes
+this method won't set your `online` flag to `True`. Typically you want to call `set_online` first to allow others find you.
+
+
+### user/first
+
+same as `user/random`, except that this method will return the first online user found. Searching order is not documented, you should not assume anything about this.
 
 ## Activity
 ### activity/all
