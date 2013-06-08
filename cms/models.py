@@ -26,6 +26,7 @@ class UserProfile(models.Model):
     gender = models.IntegerField(default=0)
     tags = TaggableManager()
     age = models.IntegerField(default=0)
+    online = models.BooleanField(default=False)
 
 class ActivityForm(ModelForm):
 

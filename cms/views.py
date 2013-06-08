@@ -9,6 +9,9 @@ from models import UserProfile
 from SEServer.lib import json_response, auth_required
 from django.contrib.auth import authenticate, login as dj_login, logout as dj_logout
 import sys
+from subprocess import call
+import xmpp
+
 
 @require_POST
 @json_response
@@ -81,20 +84,37 @@ def register(request):
 
     user = User.objects.filter(username=username)
     if user.count() == 0:
-        user = User.objects.create_user(username,'example@example.com',password)
+        cli=xmpp.Client("162.105.74.252", debug=[])
+        cli.connect()
+        if xmpp.features.register(
+                                    cli,
+                                    "162.105.74.252",
+                                    {
+                                        'username':username,
+                                        'password':password
+                                    }
+                                ):
 
-        profile = UserProfile(**{'age':age, 'nickname':nickname, 'realname':realname, 'gender': gender})
-        user.save()
+            sys.stderr.write("Success!\n")
+            user = User.objects.create_user(username,'example@example.com',password)
 
-        profile.user = user
+            profile = UserProfile(**{'age':age, 'nickname':nickname, 'realname':realname, 'gender': gender})
+            user.save()
 
-        profile.save()
+            profile.user = user
 
-        user = authenticate(username=username,password=password)
-        dj_login(request, user)
+            profile.save()
 
+            user = authenticate(username=username,password=password)
+            dj_login(request, user)
+
+            return {
+                'status': 0,
+            }
         return {
-            'status': 0,
+            'status': 101,
+            'user_info': u'username used',
+            'error_info': u'can not alloc xmpp user, xmpp server may not running',
         }
 
     return {
@@ -126,3 +146,27 @@ def add_tags(request):
 
 def home(request):
     return render_to_response('index.html')
+
+
+@require_POST
+@auth_required
+@json_response
+def set_online(request):
+    user = request.user
+    user.profile.online = True
+    user.profile.save()
+    return {
+        'status': 0,
+    }
+
+@require_POST
+@auth_required
+@json_response
+def set_offline(request):
+    user = request.user
+    user.profile.online = False
+    user.profile.save()
+    return {
+        'status': 0,
+    }
+

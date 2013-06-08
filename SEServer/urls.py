@@ -11,6 +11,8 @@ urlpatterns = patterns('cms.views',
     url(r'^profile$', 'profile', name='profile'),
     url(r'^add_tags$', 'add_tags'),
     url(r'^$', 'home', name='home'),
+    url(r'^set_online$', 'set_online'),
+    url(r'^set_offline$', 'set_offline'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
@@ -21,6 +23,8 @@ urlpatterns = patterns('cms.views',
 urlpatterns += patterns('cms.user_views',
 
     url(r'^user/profile$', 'profile', name='user_profile'),
+    url(r'^user/random$', 'random'),
+    url(r'^user/first$', 'first'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
