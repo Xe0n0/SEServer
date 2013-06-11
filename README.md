@@ -2,6 +2,9 @@ API Documention
 ========
 
 ## change log
+### 1.2
+* `user/first` now return user that has most common tags with the request user
+
 ### 1.1
 
 * add `user/random` `user/first` `set_online` `set_offline`
