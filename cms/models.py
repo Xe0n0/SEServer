@@ -28,6 +28,9 @@ class UserProfile(models.Model):
     age = models.IntegerField(default=0)
     online = models.BooleanField(default=False)
 
+    def tag_list(self):
+        return map(lambda x: x.name, self.tags.all())
+
 class ActivityForm(ModelForm):
 
     class Meta:

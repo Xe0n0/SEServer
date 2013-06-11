@@ -69,15 +69,26 @@ def random(request):
 @auth_required
 @json_response
 def first(request):
+	user_profile = request.user.profile
 	online_list = UserProfile.objects.filter(online=True).filter(~Q(id=request.user.profile.id))
-	from random import randint
+
 	if online_list.count():
-		profile = online_list[0]
+
+		def best(xprofile, yprofile):
+			if not hasattr(xprofile, 'count'):
+				xprofile.count = len([tag for tag in xprofile.tag_list() if tag in user_profile.tag_list()])
+			yprofile.count = len([tag for tag in yprofile.tag_list() if tag in user_profile.tag_list()])
+			if xprofile.count >= yprofile.count:
+				return xprofile
+			return yprofile
+
+		profile =  reduce(best, online_list)
 		return {
 			'status': 0,
 			'username': profile.user.username,
 			'realname': profile.realname,
 			'nickname': profile.nickname,
+			'tags': profile.tag_list(),
 		}
 
 	return {
