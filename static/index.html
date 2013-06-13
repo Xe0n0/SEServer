@@ -309,6 +309,36 @@ pre code {
 </ul>
 
 
+<h3>remove_tags</h3>
+
+<p><code>login required</code></p>
+
+<h4>parameters</h4>
+
+<ul>
+<li><code>tags</code>: string separated by ',', eg. 'handsome,hentai', all tags provided will be removed</li>
+</ul>
+
+
+<h3>return value</h3>
+
+<ul>
+<li><p>success</p>
+
+<pre><code>  {
+      "status": 0,
+      "tags": []
+  }
+</code></pre></li>
+<li><p>error</p>
+
+<ul>
+<li>status <code>103</code>: bad params</li>
+</ul>
+</li>
+</ul>
+
+
 <h3>set_online</h3>
 
 <p><code>login required</code></p>
