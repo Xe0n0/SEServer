@@ -129,6 +129,14 @@ pre code {
     font-size: 11px;
     padding: 0;
 }
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
 @media screen and (min-width: 914px) {
     body {
         width: 854px;
@@ -152,10 +160,17 @@ pre code {
 
 <h2>change log</h2>
 
+<h3>1.3</h3>
+
+<ul>
+<li>add <a href="#anchor_remove_tags"><code>remove_tags</code></a> method</li>
+</ul>
+
+
 <h3>1.2</h3>
 
 <ul>
-<li><code>user/first</code> now return user that has most common tags with the request user</li>
+<li><a href="#anchor_user_first"><code>user/first</code></a> now return user that has most common tags with the request user</li>
 </ul>
 
 
@@ -309,7 +324,7 @@ pre code {
 </ul>
 
 
-<h3>remove_tags</h3>
+<h3><span id="anchor_remove_tags">remove_tags</span></h3>
 
 <p><code>login required</code></p>
 
@@ -438,7 +453,7 @@ pre code {
 
 <p>this method won't set your <code>online</code> flag to <code>True</code>. Typically you want to call <code>set_online</code> first to allow others find you.</p>
 
-<h3>user/first</h3>
+<h3><span id="anchor_user_first">user/first</span></h3>
 
 <p>same as <code>user/random</code>, except that this method will return the first online user found. Searching order is not documented, you should not assume anything about this.</p>
 

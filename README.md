@@ -2,8 +2,11 @@ API Documention
 ========
 
 ## change log
+### 1.3
+* add [`remove_tags`](#anchor_remove_tags) method
+
 ### 1.2
-* `user/first` now return user that has most common tags with the request user
+* [`user/first`](#anchor_user_first) now return user that has most common tags with the request user
 
 ### 1.1
 
@@ -103,7 +106,7 @@ no parameters required
 * error
 	* status `103`: tags required
 
-### remove_tags
+### [remove_tags](id:anchor_remove_tags)
 `login required`
 #### parameters
 * `tags`: string separated by ',', eg. 'handsome,hentai', all tags provided will be removed
@@ -189,7 +192,7 @@ same as `set_online` except that this method get your online status to `False`
 this method won't set your `online` flag to `True`. Typically you want to call `set_online` first to allow others find you.
 
 
-### user/first
+### [user/first](id:anchor_user_first)
 
 same as `user/random`, except that this method will return the first online user found. Searching order is not documented, you should not assume anything about this.
 
