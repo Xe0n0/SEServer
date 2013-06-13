@@ -3,7 +3,7 @@ from django.utils import simplejson
 from django.views.decorators.http import require_POST
 from django.contrib.auth.models import User
 from models import Activity, ActivityForm
-from SEServer.lib import json_response, auth_required
+from SEServer.lib import json_response, auth_required, require_params
 import sys
 
 
@@ -14,9 +14,6 @@ def create(request):
 	from datetime import datetime
 
 	form = ActivityForm(request.POST)
-	# form.time = datetime.strptime(request.POST.get('time', None), '%Y-%m-%d %H:%M')
-	
-
 
 	if form.is_valid():
 		ac = form.save(commit=False)
@@ -38,7 +35,8 @@ def create(request):
 @require_POST
 @auth_required
 @json_response
-def add_tags(request):
+@require_params(['id', 'tags'])
+def add_tags(request, id, tags):
 	id = request.POST.get('id', None)
 	tags = request.POST.get('tags', None)
 	if id is None or tags is None:

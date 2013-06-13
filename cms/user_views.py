@@ -3,19 +3,13 @@ from django.utils import simplejson
 from django.views.decorators.http import require_POST
 from django.contrib.auth.models import User
 from models import UserProfile
-from SEServer.lib import json_response, auth_required
+from SEServer.lib import json_response, auth_required, require_params
 
 @require_POST
 @auth_required
 @json_response
-def profile(request):
-	id = request.POST.get('id', None)
-	if id is None:
-		return {
-			'status': 103,
-			'user_info': u'user id required',
-		}
-
+@require_params(['id'])
+def profile(request, id):
 	try:
 		user = User.objects.get(id = id)
 		profile = user.profile

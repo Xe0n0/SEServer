@@ -102,6 +102,22 @@ no parameters required
 
 * error
 	* status `103`: tags required
+
+### remove_tags
+`login required`
+#### parameters
+* `tags`: string separated by ',', eg. 'handsome,hentai', all tags provided will be removed
+
+### return value
+* success 
+
+		{
+		    "status": 0,
+		    "tags": []
+		}
+
+* error
+	* status `103`: bad params
 	
 ### set_online
 `login required`

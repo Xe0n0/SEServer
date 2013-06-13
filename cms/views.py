@@ -6,7 +6,7 @@ from django.views.decorators.http import require_POST
 from django.shortcuts import render_to_response
 from django.contrib.auth.models import User
 from models import UserProfile
-from SEServer.lib import json_response, auth_required
+from SEServer.lib import json_response, auth_required, require_params
 from django.contrib.auth import authenticate, login as dj_login, logout as dj_logout
 import sys
 from subprocess import call
@@ -15,7 +15,8 @@ import xmpp
 
 @require_POST
 @json_response
-def login(request):
+@require_params(['username', 'password'])
+def login(request, username, password):
     '''
     required params:
         * username
@@ -32,9 +33,6 @@ def login(request):
         }
 
     '''
-    
-    username = request.POST.get('username', '')
-    password = request.POST.get('password', '')
     user = authenticate(username=username,password=password)
     if user:
         if user.is_active:
@@ -72,10 +70,9 @@ def profile(request):
 
 @require_POST
 @json_response
-def register(request):
+@require_params(['username', 'password'])
+def register(request, username, password):
 
-    username = request.POST.get('username', '')
-    password = request.POST.get('password', '')
     age = request.POST.get('age', 20)
     nickname = request.POST.get('nickname', '')
     realname = request.POST.get('realname', '')
@@ -125,28 +122,36 @@ def register(request):
 @require_POST
 @auth_required
 @json_response
-def add_tags(request):
+@require_params(['tags'])
+def add_tags(request, tags):
+
     user = request.user
 
-    tags = request.POST.get('tags', None)
-    if tags is None:
-        return {
-            'status': 103,
-            'user_info': 'tags required',
-        }
     tags = tags.split(',')
     user.profile.tags.add(*tags)
 
-    r_tags = map(lambda x: x.name, user.profile.tags.all())
-    # print >> sys.stderr, r_tags
     return {
         'status': 0,
-        'tags': r_tags,
+        'tags': user.profile.tag_list(),
     }
 
 def home(request):
     return render_to_response('index.html')
 
+
+@require_POST
+@auth_required
+@json_response
+@require_params(['tags'])
+def remove_tags(request, tags):
+    user = request.user
+    tags = tags.split(',')
+    user.profile.tags.remove(*tags)
+
+    return {
+        'status': 0,
+        'tags': user.profile.tag_list(),
+    }
 
 @require_POST
 @auth_required
