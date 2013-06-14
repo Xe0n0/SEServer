@@ -42,11 +42,10 @@ def require_params(required_params_list):
     Decorator to make a view only accept if required params provided  Usage::
 
         @require_params(["username", "password"])
-        def my_view(request):
+        def my_view(request, username, password):
             # I can directly use `username` and `password` now
             # ...
 
-    Note that request methods should be in uppercase.
     """
     def decorator(func):
         @wraps(func, assigned=available_attrs(func))

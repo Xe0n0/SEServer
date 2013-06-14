@@ -37,13 +37,6 @@ def create(request):
 @json_response
 @require_params(['id', 'tags'])
 def add_tags(request, id, tags):
-	id = request.POST.get('id', None)
-	tags = request.POST.get('tags', None)
-	if id is None or tags is None:
-		return {
-			'status': 103,
-			'user_info': u'activity id and tags required',
-		}
 
 	try: 
 		act = Activity.objects.get(id=id)
